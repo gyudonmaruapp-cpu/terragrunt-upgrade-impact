@@ -43,7 +43,7 @@ terragrunt --version
 tofu --version    # or: terraform version
 ```
 
-Also look for pins: `.terragrunt-version`, `.tool-versions`, `mise.toml`, CI workflow files, Dockerfiles, devcontainer config. Many repositories pin nothing: ask the user. If pipelines and developers use different versions, report each; do not pick one.
+Also look for pins: `.terragrunt-version`, `.tool-versions`, `mise.toml`, CI workflow files, Dockerfiles, devcontainer config. Many repositories pin nothing: ask the user, but do not stop there. While waiting, trace every old name found in the repository through all stable releases (Step 3) and report the version in which each was deprecated or removed. The user can then compare that with what they run. If pipelines and developers use different versions, report each; do not pick one.
 
 ### Step 2: Identify target version
 
