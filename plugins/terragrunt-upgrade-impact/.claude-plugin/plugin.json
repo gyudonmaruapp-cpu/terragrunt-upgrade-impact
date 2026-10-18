@@ -1,0 +1,10 @@
+{
+  "name": "terragrunt-upgrade-impact",
+  "description": "Assess what a Terragrunt version upgrade will break in a repository, from primary sources, before upgrading",
+  "version": "0.1.0",
+  "author": {
+    "name": "gyudonmaruapp-cpu"
+  },
+  "license": "MIT",
+  "keywords": ["terragrunt", "terraform", "opentofu", "upgrade", "iac"]
+}

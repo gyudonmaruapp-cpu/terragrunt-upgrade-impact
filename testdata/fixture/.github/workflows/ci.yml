@@ -1,0 +1,5 @@
+jobs:
+  plan:
+    steps:
+      - run: terragrunt validate-all
+      - run: terragrunt graph-dependencies | dot -Tpng > g.png

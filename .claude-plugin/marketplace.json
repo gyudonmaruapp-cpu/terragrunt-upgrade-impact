@@ -1,0 +1,14 @@
+{
+  "name": "terragrunt-upgrade-impact",
+  "description": "Skills for assessing what a Terragrunt version upgrade will break",
+  "owner": {
+    "name": "gyudonmaruapp-cpu"
+  },
+  "plugins": [
+    {
+      "name": "terragrunt-upgrade-impact",
+      "source": "./plugins/terragrunt-upgrade-impact",
+      "description": "Assess what a Terragrunt version upgrade will break in a repository, from primary sources, before upgrading"
+    }
+  ]
+}

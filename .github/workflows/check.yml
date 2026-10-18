@@ -1,0 +1,35 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # The skill depends on pages outside this repository; look for moved ones weekly.
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate marketplace and plugin
+        run: |
+          claude plugin validate .
+          claude plugin validate ./plugins/terragrunt-upgrade-impact
+
+  urls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check that the source URLs still resolve
+        run: bash scripts/check-urls.sh
