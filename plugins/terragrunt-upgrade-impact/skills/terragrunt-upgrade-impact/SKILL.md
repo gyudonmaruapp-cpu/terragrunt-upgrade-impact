@@ -68,6 +68,8 @@ gh api repos/gruntwork-io/terragrunt/releases --paginate > "${TMPDIR:-/tmp}/tg-r
 jq -r --arg n "hclfmt" '.[] | select(.prerelease==false and ((.body // "") | contains($n))) | .tag_name' "${TMPDIR:-/tmp}/tg-releases.json"
 ```
 
+`jq` may not be installed. Then filter the saved file with `python3`, or run the same filter per name through `gh` itself, which has jq built in: `gh api repos/gruntwork-io/terragrunt/releases --paginate --jq '.[] | select(.prerelease==false and ((.body // "") | contains("hclfmt"))) | .tag_name'`.
+
 Keep only tags in range, open the surrounding lines of each, in version order, and take the last statement as the status. This is how a name that looks "only deprecated" in its first note turns out to be removed many releases later. The docs pages are a cross-check, not a substitute: they can still list a removed name as an opt-in strict control.
 
 **Never write "deprecated, still works" or "removed" for a name you have not traced this way.** If you did not, report it as "status unverified" next to the item itself, not only in a footnote. A wrong "still works" is worse than an honest "unknown".
